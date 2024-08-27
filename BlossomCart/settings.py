@@ -28,7 +28,8 @@ SECRET_KEY = 'django-insecure-z*_5u_$=rj%q72b&a082*!bjrxa)+(#y4xef7o6fxgo=0s8!)w
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
+CSRF_TRUSTED_ORIGINS=["https://blossomcart.onrender.com"]
 
 
 # Application definition

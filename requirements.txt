@@ -1,0 +1,25 @@
+asgiref
+comtypes
+Django
+django-crispy-forms
+django-environ
+django-filter
+djangorestframework
+Markdown
+MouseInfo
+numpy
+opencv-python
+pillow
+psycopg2
+PyAutoGUI
+PyGetWindow
+PyMsgBox
+pyperclip
+PyRect
+PyScreeze
+pyttsx3
+pytweening
+pywin32==<version>; platform_system=="Windows"
+sqlparse
+tzdata
+dj_database_url
