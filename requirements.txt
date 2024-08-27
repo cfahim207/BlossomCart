@@ -1,6 +1,7 @@
 asgiref
 comtypes
 Django
+django-cors-headers
 django-crispy-forms
 django-environ
 django-filter
