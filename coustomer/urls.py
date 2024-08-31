@@ -5,6 +5,7 @@ from coustomer import views
 router = DefaultRouter()
 
 router.register('list', views.CoustomerViewset,)
+router.register('deposite', views.DepositeViewset,)
 
 urlpatterns = [
     path('', include(router.urls)),
@@ -12,4 +13,5 @@ urlpatterns = [
     path('login/', views.UserLoginApiView.as_view(),name='login'),
     path('logout/', views.UserlogoutView.as_view(),name='logout'),
     path('active/<uid64>/<token>', views.activate,name='activate'),
+    path('dashboard/',views.DashboardView.as_view(), name='dashboard')
 ]

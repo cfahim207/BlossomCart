@@ -2,6 +2,8 @@ from rest_framework import serializers
 from .models import Flower,FlowerColor,CategoryFlower,Review
 
 class FlowerSerializer(serializers.ModelSerializer):
+    category = serializers.StringRelatedField(many=True)
+    color=serializers.StringRelatedField(many=True)
     class Meta:
         model= Flower
         fields="__all__"
@@ -17,6 +19,9 @@ class ColorSerializer(serializers.ModelSerializer):
         fields="__all__"
         
 class ReviewSerializer(serializers.ModelSerializer):
+    reviewer = serializers.StringRelatedField(many=False)
+    flower = serializers.StringRelatedField(many=False)
+    
     class Meta:
         model=Review
         fields="__all__"

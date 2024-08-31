@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Coustomer
+from .models import Coustomer,Deposite
 # Register your models here.
 class CoustomerAdmin(admin.ModelAdmin):
     list_display=['first_name','last_name','mobile_no']
@@ -10,3 +10,4 @@ class CoustomerAdmin(admin.ModelAdmin):
         return obj.user.last_name
     
 admin.site.register(Coustomer,CoustomerAdmin)
+admin.site.register(Deposite)

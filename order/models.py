@@ -12,3 +12,8 @@ class Order(models.Model):
     coustomer=models.ForeignKey(Coustomer,on_delete=models.CASCADE)
     order_status=models.CharField(choices=ORDER_STATUS,max_length=10,default="Pending")
     cancel=models.BooleanField(default=False)
+    
+    
+    def __str__(self):
+        return self.flower.name
+    
