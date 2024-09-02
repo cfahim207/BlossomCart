@@ -13,5 +13,6 @@ urlpatterns = [
     path('login/', views.UserLoginApiView.as_view(),name='login'),
     path('logout/', views.UserlogoutView.as_view(),name='logout'),
     path('active/<uid64>/<token>', views.activate,name='activate'),
-    path('dashboard/',views.DashboardView.as_view(), name='dashboard')
+    path('dashboard/',views.DashboardView.as_view(), name='dashboard'),
+    path('userdetails/', views.UserDetailView.as_view(), name='user-detail'),
 ]

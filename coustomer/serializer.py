@@ -73,3 +73,9 @@ class UserLoginSerializer(serializers.Serializer):
     username=serializers.CharField(required=True)
     password=serializers.CharField(required=True)
     
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['id', 'username','first_name','last_name','email','is_superuser','date_joined']
+    

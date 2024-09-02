@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework import viewsets
 from .models import Coustomer,Deposite
-from .serializer import CoustomerSerializer,RegistrationSerializer,UserLoginSerializer,DepositTransactionSerializer
+from .serializer import CoustomerSerializer,RegistrationSerializer,UserLoginSerializer,DepositTransactionSerializer,UserSerializer
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.contrib.auth.tokens import default_token_generator
@@ -118,6 +118,7 @@ class DashboardView(generics.GenericAPIView):
 
             return Response({
                 "coustomer": CoustomerSerializer(coustomer, many=True).data,
+                "user": UserSerializer(request.user).data,
                 "deposite": DepositTransactionSerializer(deposite, many=True).data,
                 "orders": OrderSerializer(orders, many=True).data,
                 "flower": FlowerSerializer(flower, many=True).data,
@@ -131,9 +132,19 @@ class DashboardView(generics.GenericAPIView):
             coustomer = request.user.coustomer
             deposite = Deposite.objects.filter(coustomer=coustomer)
             orders = Order.objects.filter(coustomer=coustomer)
+            
 
             return Response({
                 "profile": CoustomerSerializer(coustomer).data,
+                "user": UserSerializer(request.user).data,
                 "deposite": DepositTransactionSerializer(deposite, many=True).data,
                 "orders": OrderSerializer(orders, many=True).data
             })
+            
+            
+
+class UserDetailView(generics.RetrieveAPIView):
+    serializer_class = UserSerializer
+    
+    def get_object(self):
+        return self.request.user
