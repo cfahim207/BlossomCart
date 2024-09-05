@@ -15,6 +15,8 @@ class FlowerViewset(viewsets.ModelViewSet):
     filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
     filterset_fields = ['category']
     
+    def create(self, request, *args, **kwargs):
+        return super().create(request, *args, **kwargs)
     
     def get_queryset(self):
         queryset=super().get_queryset()

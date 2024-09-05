@@ -6,7 +6,8 @@ class FlowerSerializer(serializers.ModelSerializer):
     color=serializers.StringRelatedField(many=True)
     class Meta:
         model= Flower
-        fields="__all__"
+        fields=['category','color','image','name','price']
+        
         
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:

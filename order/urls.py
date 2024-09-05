@@ -8,4 +8,4 @@ router.register('list', views.OrderViewset,)
 
 urlpatterns = [
     path('', include(router.urls)),
-]
+]  

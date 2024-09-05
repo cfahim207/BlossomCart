@@ -1,5 +1,6 @@
 from django.db import models
 from coustomer.models import Coustomer
+from cloudinary.models import CloudinaryField
 # Create your models here.
 class CategoryFlower(models.Model):
     name=models.CharField(max_length=50)
@@ -18,7 +19,7 @@ class FlowerColor(models.Model):
     
     
 class Flower(models.Model):
-    image=models.ImageField(upload_to="flower/images")
+    image=models.URLField(max_length=255, blank=True, null=True)
     name=models.CharField(max_length=50)
     price=models.IntegerField()
     color=models.ManyToManyField(FlowerColor)
