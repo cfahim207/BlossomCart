@@ -9,7 +9,7 @@ class FlowerSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Flower
-        fields = ['category', 'category_display', 'color', 'color_display', 'image', 'name', 'price']
+        fields = ['id','category', 'category_display', 'color', 'color_display', 'image', 'name', 'price']
 
 
         
