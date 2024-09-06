@@ -6,9 +6,6 @@ from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import filters, pagination
 # Create your views here.
 
-
-    
-    
 class FlowerViewset(viewsets.ModelViewSet):
     queryset = Flower.objects.all()
     serializer_class = FlowerSerializer

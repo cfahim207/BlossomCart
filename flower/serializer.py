@@ -25,9 +25,15 @@ class ColorSerializer(serializers.ModelSerializer):
         
 class ReviewSerializer(serializers.ModelSerializer):
     reviewer = serializers.StringRelatedField(many=False)
-    flower = serializers.StringRelatedField(many=False)
+    flower = serializers.PrimaryKeyRelatedField(queryset=Flower.objects.all())  
+    flower_name = serializers.SerializerMethodField()
     
     class Meta:
         model=Review
         fields="__all__"
+        extra_fields = ['flower_name'] 
+        
+    def get_flower_name(self, obj):
+        # Retrieve the name of the related flower object
+        return obj.flower.name
     
