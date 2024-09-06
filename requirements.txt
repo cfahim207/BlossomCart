@@ -1,5 +1,6 @@
 asgiref
 comtypes
+cloudinary
 Django
 django-cors-headers
 django-crispy-forms
