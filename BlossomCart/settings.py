@@ -18,11 +18,6 @@ environ.Env.read_env()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# cloudinary imports
-
-import cloudinary
-import cloudinary.uploader
-import cloudinary.api
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
@@ -167,11 +162,3 @@ EMAIL_HOST_USER = env("EMAIL")
 EMAIL_HOST_PASSWORD = env("EMAIL_PASSWORD")
 
 
-# cloudinary django intrigration
-
-cloudinary.config( 
-    cloud_name = "dtlsoahcm", 
-    api_key = "859833143977135", 
-    api_secret = "VlRtSyTlzIikLEwPu1UHlCIvb5g", # Click 'View API Keys' above to copy your API secret
-    secure=True
-)

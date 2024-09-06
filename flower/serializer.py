@@ -2,12 +2,16 @@ from rest_framework import serializers
 from .models import Flower,FlowerColor,CategoryFlower,Review
 
 class FlowerSerializer(serializers.ModelSerializer):
-    category = serializers.StringRelatedField(many=True)
-    color=serializers.StringRelatedField(many=True)
+    category = serializers.PrimaryKeyRelatedField(many=True, queryset=CategoryFlower.objects.all())  # For writing
+    category_display = serializers.StringRelatedField(many=True, source='category', read_only=True)  # For reading
+    color = serializers.PrimaryKeyRelatedField(many=True, queryset=FlowerColor.objects.all())  # For writing
+    color_display = serializers.StringRelatedField(many=True, source='color', read_only=True)  # For reading
+
     class Meta:
-        model= Flower
-        fields=['category','color','image','name','price']
-        
+        model = Flower
+        fields = ['category', 'category_display', 'color', 'color_display', 'image', 'name', 'price']
+
+
         
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:

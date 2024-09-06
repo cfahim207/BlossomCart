@@ -19,7 +19,7 @@ class FlowerColor(models.Model):
     
     
 class Flower(models.Model):
-    image=models.URLField(max_length=255, blank=True, null=True)
+    image=models.CharField(max_length=255, default="")
     name=models.CharField(max_length=50)
     price=models.IntegerField()
     color=models.ManyToManyField(FlowerColor)
