@@ -15,10 +15,6 @@ class FlowerViewset(viewsets.ModelViewSet):
     def create(self, request, *args, **kwargs):
         return super().create(request, *args, **kwargs)
     
-    def destroy(self, request, *args, **kwargs):
-        instance = self.get_object()
-        self.perform_destroy(instance)
-        return Response(status=204)
     
     def get_queryset(self):
         queryset=super().get_queryset()
