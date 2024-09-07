@@ -14,10 +14,8 @@ class FlowerViewset(viewsets.ModelViewSet):
     
     def create(self, request, *args, **kwargs):
         return super().create(request, *args, **kwargs)
+    
     def destroy(self, request, *args, **kwargs):
-        # Only allow admin to delete a flower
-        if not request.user.is_staff:
-            return Response({"error": "You do not have permission to delete this flower."}, status=403)
         return super().destroy(request, *args, **kwargs)
     
     def get_queryset(self):
