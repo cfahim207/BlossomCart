@@ -1,6 +1,5 @@
 from django.db import models
 from coustomer.models import Coustomer
-from cloudinary.models import CloudinaryField
 # Create your models here.
 class CategoryFlower(models.Model):
     name=models.CharField(max_length=50)

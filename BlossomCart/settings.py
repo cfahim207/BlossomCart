@@ -28,6 +28,7 @@ SECRET_KEY = 'django-insecure-z*_5u_$=rj%q72b&a082*!bjrxa)+(#y4xef7o6fxgo=0s8!)w
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+ALLOWED_HOSTS = ["127.0.0.1", ".vercel.app"]
 
 
 
@@ -35,6 +36,7 @@ DEBUG = True
 # Application definition
 
 INSTALLED_APPS = [
+    "whitenoise.runserver_nostatic",
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -49,12 +51,12 @@ INSTALLED_APPS = [
     'coustomer',
     'flower',
     'order',
-    'cloudinary',
 ]
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -64,7 +66,7 @@ MIDDLEWARE = [
 ]
 
 
-ALLOWED_HOSTS = ["*"]
+
 CSRF_TRUSTED_ORIGINS=["https://blossomcart.onrender.com","http://127.0.0.1:5500"]
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOWED_ORIGINS = [
@@ -89,21 +91,35 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'BlossomCart.wsgi.application'
+WSGI_APPLICATION = 'BlossomCart.wsgi.app'
 
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+# DATABASES = {
+#     # 'default': {
+#     #     'ENGINE': 'django.db.backends.sqlite3',
+#     #     'NAME': BASE_DIR / 'db.sqlite3',
+#     # }
+#     'default':dj_database_url.config(
+#        default='postgresql://project_4zx5_user:7iet8tK5JoOj85Xif82zWd1OBUcLh3nS@dpg-cre8vujv2p9s73csimag-a.oregon-postgres.render.com/project_4zx5'
+#     )
+# }
+
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.sqlite3',
-    #     'NAME': BASE_DIR / 'db.sqlite3',
-    # }
-    'default':dj_database_url.config(
-       default='postgresql://project_4zx5_user:7iet8tK5JoOj85Xif82zWd1OBUcLh3nS@dpg-cre8vujv2p9s73csimag-a.oregon-postgres.render.com/project_4zx5'
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgres',
+        'USER': 'postgres.zvzkofakhvbyxgvhoowr',
+        'PASSWORD': 'd4pB*a@a$!DuVJ_',
+        'HOST': 'aws-0-ap-southeast-1.pooler.supabase.com',
+        'PORT': '6543'
+    }
 }
+
+
+
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
@@ -152,6 +168,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT= BASE_DIR / 'staticfiles'
 MEDIA_URL = '/media/'
 
 # Default primary key field type
